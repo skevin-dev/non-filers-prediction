@@ -1,6 +1,7 @@
-import pandas as pd
-import numpy as np
 import joblib
+import numpy as np
+import pandas as pd
+
 
 def predict_filer(data: pd.DataFrame) -> pd.Series:
     """
@@ -13,14 +14,21 @@ def predict_filer(data: pd.DataFrame) -> pd.Series:
 
     # Drop irrelevant columns
     drop_cols = [
-        'filer_status', 'filer_status_encoded', 'doc_no', 'close_date',
-        'reg_date', 'year', 'month', 'reg_year', 'closed_year',
-        'district_label', 'tax_type_label'
+        "filer_status",
+        "filer_status_encoded",
+        "doc_no",
+        "close_date",
+        "reg_date",
+        "year",
+        "month",
+        "reg_year",
+        "closed_year",
+        "district_label",
+        "tax_type_label",
     ]
-    data_numeric = data.drop(columns=drop_cols, errors="ignore").select_dtypes(include=[np.number])
-
-  
-
+    data_numeric = data.drop(columns=drop_cols, errors="ignore").select_dtypes(
+        include=[np.number]
+    )
 
     # Predict
     predictions = model.predict(data_numeric)
