@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "nonfiler"
+version = "0.1.0"
+description = ""
+authors = ["shy2351783 <Kevin.Shyaka@rra.gov.rw>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "2.2.3"
+xgboost = "^3.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
