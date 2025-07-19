@@ -6,6 +6,7 @@ import os
 import pandas as pd
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.preprocessing import OneHotEncoder
 from xgboost import XGBClassifier
 
@@ -76,9 +77,23 @@ def train_and_save_model(data: pd.DataFrame, model_path="models/xgb_classifier.p
     )
 
     model.fit(X_train_bal_raw, y_train_bal_raw)
-    
+
+    accuracy_train = accuracy_score(y_train_raw, model.predict(X_train_raw))
+    accuracy_test = accuracy_score(y_test_raw, model.predict(X_test_raw))
+
     # 🔟 Save model
     joblib.dump(model, os.path.join(model_path, "xgb_model.pkl"))
 
-    
-    print(f"✅ Model saved to {model_path}")
+    print(
+        f"✅ Model saved to {model_path} with training accuracy of {accuracy_train} and testing accuracy of {accuracy_test}"
+    )
+
+    print ("----------------------- training classification report ------------------------------------")
+
+    print(classification_report(y_train_raw, model.predict(X_train_raw), target_names=['non filer', 'filer']))
+
+    print ("----------------------- testing classification report ------------------------------------")
+
+    print(classification_report(y_test_raw, model.predict(X_test_raw), target_names=['non filer', 'filer']))
+
+

@@ -1,7 +1,9 @@
 import pandas as pd
 
 
-def drop_highly_correlated_features(data, target_column=None, high_threshold=0.85) -> pd.DataFrame:
+def drop_highly_correlated_features(
+    data, target_column=None, high_threshold=0.85
+) -> pd.DataFrame:
     """
     Drop features that are highly correlated with each other.
 
