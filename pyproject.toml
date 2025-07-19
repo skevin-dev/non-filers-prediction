@@ -12,6 +12,8 @@ xgboost = "^3.0.2"
 joblib = "^1.5.1"
 imblearn = "^0.0"
 fastapi = "^0.116.1"
+python-multipart = "^0.0.20"
+dotenv = "^0.9.9"
 
 
 [build-system]
